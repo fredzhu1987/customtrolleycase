@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Suitcase - Personalized Luggage Service</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section 1 - Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 20px 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #1e40af, #4f46e5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo span {
+            color: #4f46e5;
+        }
+
+        .divider {
+            width: 60px;
+            height: 3px;
+            background: #4f46e5;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-text {
+            font-size: 1.5rem;
+            color: #475569;
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: nowrap;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            min-width: 220px;
+            flex: 1;
+            max-width: 220px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #4f46e5;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1e293b;
+        }
+
+        .feature-price {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #4f46e5;
+            margin: 0.5rem 0;
+        }
+
+        .feature-emphasis {
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: #1e40af;
+            margin: 0.5rem 0;
+        }
+
+        .feature-detail {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        /* Section 2 - Gallery */
+        .gallery {
+            padding: 5rem 0;
+            background-color: #f8fafc;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+
+        .suitcases {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .suitcase-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .suitcase-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .suitcase-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .size-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #4f46e5;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .testimonial-content {
+            padding: 1.5rem;
+        }
+
+        .customer-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .customer-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #4f46e5;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .customer-name {
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .stars {
+            color: #f59e0b;
+            margin-top: 0.25rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Section 3 - World Map */
+        .world-map {
+            padding: 5rem 0;
+            background: linear-gradient(90deg, #4f46e5 0%, #7c3aed 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .world-map .section-title {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .world-map-text {
+            text-align: center;
+            color: #e2e8f0;
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .map-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            height: 450px;
+            background: #1e293b;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .world-map-svg {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .origin-marker {
+            position: absolute;
+            top: 55%;
+            left: 58%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+        }
+
+        .origin-dot {
+            width: 24px;
+            height: 24px;
+            background: #ef4444;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);
+            margin: 0 auto 12px;
+        }
+
+        .origin-label {
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .destination-marker {
+            position: absolute;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .destination-dot {
+            width: 16px;
+            height: 16px;
+            background: #fbbf24;
+            border: 3px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+            margin: 0 auto 8px;
+        }
+
+        .destination-label {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .shipping-line {
+            position: absolute;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.6);
+            transform-origin: left center;
+            z-index: 5;
+        }
+
+        /* Section 4 - Product Showcase */
+        .products {
+            padding: 5rem 0;
+            background-color: #f1f5f9;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .products-container {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+            padding: 2rem 0;
+        }
+
+        .products-container:hover {
+            animation-play-state: paused;
+        }
+
+        .product-item {
+            width: 280px;
+            margin: 0 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-size {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            color: #1e293b;
+        }
+
+        .product-specs {
+            color: #64748b;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Section 5 - Contact */
+        .contact {
+            padding: 5rem 0;
+            background-color: #0f172a;
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .contact-text {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .contact-card {
+            background: #1e293b;
+            padding: 3rem;
+            border-radius: 24px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .contact-icon-container {
+            width: 56px;
+            height: 56px;
+            background: #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: white;
+        }
+
+        .contact-info p {
+            color: #94a3b8;
+        }
+
+        .contact-footer {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #94a3b8;
+            margin-top: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            color: #94a3b8;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text {
+                font-size: 1.25rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .features {
+                gap: 1rem;
+            }
+            
+            .feature-card {
+                min-width: 140px;
+                max-width: 160px;
+                padding: 1.5rem;
+            }
+            
+            .feature-price,
+            .feature-emphasis {
+                font-size: 1.5rem;
+            }
+            
+            .feature-title {
+                font-size: 0.95rem;
+            }
+            
+            .contact-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+            
+            .products-container {
+                animation-duration: 20s;
+            }
+            
+            /* Two columns on mobile for features */
+            .features {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .feature-card {
+                flex: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero-text {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .feature-price,
+            .feature-emphasis {
+                font-size: 1.25rem;
+            }
+            
+            .map-container {
+                height: 280px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon-container {
+                margin-bottom: 1rem;
+            }
+            
+            .origin-marker {
+                top: 55%;
+                left: 58%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Section 1: Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="logo">Custom<span>Suitcase</span></h1>
+                <div class="divider"></div>
+                <p class="hero-text">Personalized luggage crafted just for you. Starting at $99 with 1-week delivery. Available in multiple sizes.</p>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <h3 class="feature-title">1 Piece Minimum Order</h3>
+                        <div class="feature-price">$99</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3 class="feature-title">Fast Delivery</h3>
+                        <div class="feature-emphasis">1 Week</div>
+                        <p class="feature-detail">Ships within 7 days</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3 class="feature-title">Global Origin From</h3>
+                        <div class="feature-emphasis">China</div>
+                        <p class="feature-detail">Quality manufacturing hub</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-ruler-combined"></i>
+                        </div>
+                        <h3 class="feature-title">Size Options</h3>
+                        <div class="feature-emphasis">20" - 29"</div>
+                        <p class="feature-detail">20", 24", 26", 29" available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title">Custom Creations & Happy Customers</h2>
+            <div class="suitcases">
+                <div class="suitcase-card">
+                    <div style="position: relative;">
+                        <img src="https://placehold.co/400x300/4f46e5/ffffff?text=20%22+Custom+Suitcase" alt="20 inch Custom Suitcase" class="suitcase-image">
+                        <div class="size-badge">20"</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="customer-info">
+                            <div class="customer-avatar">SJ</div>
+                            <div>
+                                <div class="customer-name">Sarah Johnson</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Absolutely love my custom suitcase! The quality is exceptional and it arrived right on schedule."</p>
+                    </div>
+                </div>
+                
+                <div class="suitcase-card">
+                    <div style="position: relative;">
+                        <img src="https://placehold.co/400x300/7c3aed/ffffff?text=24%22+Custom+Suitcase" alt="24 inch Custom Suitcase" class="suitcase-image">
+                        <div class="size-badge">24"</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="customer-info">
+                            <div class="customer-avatar">MC</div>
+                            <div>
+                                <div class="customer-name">Michael Chen</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Perfect for my business trips. The customization made it uniquely mine and very durable."</p>
+                    </div>
+                </div>
+                
+                <div class="suitcase-card">
+                    <div style="position: relative;">
+                        <img src="https://placehold.co/400x300/ec4899/ffffff?text=26%22+Custom+Suitcase" alt="26 inch Custom Suitcase" class="suitcase-image">
+                        <div class="size-badge">26"</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="customer-info">
+                            <div class="customer-avatar">ER</div>
+                            <div>
+                                <div class="customer-name">Emma Rodriguez</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Great value for money! The 26-inch size is perfect for my family vacations."</p>
+                    </div>
+                </div>
+                
+                <div class="suitcase-card">
+                    <div style="position: relative;">
+                        <img src="https://placehold.co/400x300/06b6d4/ffffff?text=29%22+Custom+Suitcase" alt="29 inch Custom Suitcase" class="suitcase-image">
+                        <div class="size-badge">29"</div>
+                    </div>
+                    <div class="testimonial-content">
+                        <div class="customer-info">
+                            <div class="customer-avatar">DW</div>
+                            <div>
+                                <div class="customer-name">David Wilson</div>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"The largest size fits all my gear for extended trips. Highly recommend this service!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: World Map -->
+    <section class="world-map">
+        <div class="container">
+            <h2 class="section-title">Global Shipping Network</h2>
+            <p class="world-map-text">We ship your custom suitcases from our facility in Shanghai, China to destinations worldwide</p>
+            
+            <div class="map-container">
+                <!-- World map background using SVG with simple continents -->
+                <div class="world-map-svg">
+                    <!-- Simple world map using SVG paths -->
+                    <svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                        <!-- Ocean background -->
+                        <rect width="800" height="450" fill="#1e293b"/>
+                        
+                        <!-- Continents (simplified shapes) -->
+                        <!-- North America -->
+                        <path d="M150,100 Q180,80 220,100 Q240,130 230,160 Q210,180 180,170 Q160,150 150,130 Z" fill="#334155"/>
+                        <!-- South America -->
+                        <path d="M200,180 Q220,200 210,240 Q190,260 170,250 Q160,230 170,200 Z" fill="#334155"/>
+                        <!-- Europe -->
+                        <path d="M280,100 Q310,90 330,110 Q340,140 320,160 Q290,170 270,150 Q260,130 270,110 Z" fill="#334155"/>
+                        <!-- Africa -->
+                        <path d="M290,160 Q320,180 310,220 Q290,250 260,240 Q250,220 260,190 Z" fill="#334155"/>
+                        <!-- Asia -->
+                        <path d="M340,80 Q420,70 460,120 Q480,180 450,220 Q400,240 350,220 Q320,190 330,140 Z" fill="#334155"/>
+                        <!-- Australia -->
+                        <path d="M480,260 Q510,270 520,290 Q510,310 490,300 Q470,280 480,260 Z" fill="#334155"/>
+                    </svg>
+                    
+                    <!-- Origin: Shanghai -->
+                    <div class="origin-marker">
+                        <div class="origin-dot"></div>
+                        <div class="origin-label">Shanghai</div>
+                    </div>
+                    
+                    <!-- Destinations -->
+                    <div class="destination-marker" style="top: 35%; left: 25%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">New York</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 30%; left: 42%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">London</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 45%; left: 20%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">LA</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 25%; left: 65%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">Tokyo</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 65%; left: 75%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">Sydney</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 55%; left: 30%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">São Paulo</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 40%; left: 55%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">Dubai</div>
+                    </div>
+                    
+                    <div class="destination-marker" style="top: 50%; left: 70%;">
+                        <div class="destination-dot"></div>
+                        <div class="destination-label">Singapore</div>
+                    </div>
+                    
+                    <!-- Shipping lines from Shanghai to destinations -->
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 220px; transform: translate(-50%, -50%) rotate(-110deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 200px; transform: translate(-50%, -50%) rotate(-95deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 240px; transform: translate(-50%, -50%) rotate(-70deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 180px; transform: translate(-50%, -50%) rotate(-40deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 260px; transform: translate(-50%, -50%) rotate(20deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 230px; transform: translate(-50%, -50%) rotate(60deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 160px; transform: translate(-50%, -50%) rotate(10deg);"></div>
+                    <div class="shipping-line" style="top: 55%; left: 58%; width: 210px; transform: translate(-50%, -50%) rotate(35deg);"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Product Showcase -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">Available Colors</h2>
+            <div class="products-container">
+                <!-- Duplicate items for seamless scrolling -->
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/4f46e5/ffffff?text=20%22+Suitcase" alt="20 inch Suitcase" class="product-image">
+                    <div class="product-size">20 inch</div>
+                    <div class="product-specs">Carry-on size • Perfect for weekend trips</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/7c3aed/ffffff?text=24%22+Suitcase" alt="24 inch Suitcase" class="product-image">
+                    <div class="product-size">24 inch</div>
+                    <div class="product-specs">Medium size • Ideal for business travel</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/ec4899/ffffff?text=26%22+Suitcase" alt="26 inch Suitcase" class="product-image">
+                    <div class="product-size">26 inch</div>
+                    <div class="product-specs">Large size • Great for family vacations</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/06b6d4/ffffff?text=29%22+Suitcase" alt="29 inch Suitcase" class="product-image">
+                    <div class="product-size">29 inch</div>
+                    <div class="product-specs">Extra large • Maximum packing capacity</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/4f46e5/ffffff?text=20%22+Suitcase" alt="20 inch Suitcase" class="product-image">
+                    <div class="product-size">20 inch</div>
+                    <div class="product-specs">Carry-on size • Perfect for weekend trips</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/7c3aed/ffffff?text=24%22+Suitcase" alt="24 inch Suitcase" class="product-image">
+                    <div class="product-size">24 inch</div>
+                    <div class="product-specs">Medium size • Ideal for business travel</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/ec4899/ffffff?text=26%22+Suitcase" alt="26 inch Suitcase" class="product-image">
+                    <div class="product-size">26 inch</div>
+                    <div class="product-specs">Large size • Great for family vacations</div>
+                </div>
+                <div class="product-item">
+                    <img src="https://placehold.co/280x200/06b6d4/ffffff?text=29%22+Suitcase" alt="29 inch Suitcase" class="product-image">
+                    <div class="product-size">29 inch</div>
+                    <div class="product-specs">Extra large • Maximum packing capacity</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Contact -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="contact-text">Ready to create your custom suitcase? Contact us today!</p>
+            
+            <div class="contact-card">
+                <div class="contact-item">
+                    <div class="contact-icon-container">
+                        <i class="fas fa-envelope contact-icon"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>kuci@emeicang.com</h3>
+                        <p>Email Address</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-container" style="background: #7c3aed;">
+                        <i class="fas fa-user contact-icon"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Fred</h3>
+                        <p>Contact Person</p>
+                    </div>
+                </div>
+                
+                <div class="contact-footer">
+                    <p>We typically respond within 24 hours. Your custom suitcase journey starts here!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Custom Suitcase. All rights reserved. | 1 Piece Minimum Order | $99 | Ships Worldwide</p>
+        </div>
+    </footer>
+</body>
+</html>
+
